@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="table.css">
+<title>JQuery-table</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+   <div class="container">
+   <nav class="navbar navbar-light">
+   <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" id="search" placeholder="Enter product name..." aria-label="Search">
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" id="btnSearch">Search</button>
+  </form>
+<button class="btn btn-outline-secondary btnAddNew" type="submit"> Add new </button>
+</nav>
+   </div>
+   
+
+<div class="container">
+<table id="table" class="table table-bordered">
+<thead>
+<tr>
+<th scope="col"><button type="button" class="btn btn-link">Name</button></th>
+<th><svg id="hide" style="float:right; color:black" class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"/>
+</svg><svg id="show" style="float:right; display:none" class="bi bi-caret-up-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+</svg></th>
+<th scope="col-6"><button type="button" class="btn btn-link">Price</button></th>
+<th scope="col">Actions</th>
+</tr>
+</thead>
+
+
+<form action="" id="formValid">
+  <div id="addProduct" class="addModal">
+    <div class="modal-content__big">
+<h2>Product Name</h2>
+<div class="form-group">
+<div class="col-8">
+<label for="inputName" class="form-group__item">Name:</label>
+<input type="text" class="form-control inputName valid" placeholder="Some product name">
+<span class="message messageForName"></span>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-8">
+<label for="inputEmail" class="form-group__item">Supplier email:</label>
+<input type="text" class="form-control inputEmail valid"  placeholder="spb@epam.com">
+<span class="message messageForEmail"></span>
+ </div>
+ </div>
+ 
+ <div class="form-group">
+ <div class="col-4">
+<label for="inputCount" class="form-group__item">Count:</label>
+<input type="text" class="form-control inputCount valid" placeholder="5">
+<span class="message messageForCount"></span>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-8">
+<label for="inputPrice" class="form-group__item pr">Price:</label>
+<input type="text" class="form-control inputPrice valid" placeholder="$1,234.56">
+<span class="message messageForPrice"></span>
+ </div>
+  </div>
+
+<div class="form-group__select">
+  <div class="col-5">
+ <label>Delivery:</label>
+<select class="form-control form-control-sm" id="forShowBlock">
+  <option value="emptyStr"></option>
+<option value="russia">Russia</option>
+<option value="belarus">Belarus</option>
+<option value="usa">USA</option>
+</select>
+</div>
+</div>
+<br><br><br><br><br>
+
+<div class="modal-button__form">
+<button type="submit" class="btn btn-outline-secondary saveAdd" value="save">Save changes</button>
+ <button type="button" class="btn btn-outline-secondary cancel" value="cancel">Cancel</button>
+</div>
+</div>
+</div>
+</form>
+
+
+<form action="" id="formValidEdit">
+  <div id="editProduct" class="editModal">
+    <div class="modal-content__big">
+<h2>Product Name</h2>
+<div class="form-group">
+<div class="col-8">
+<label for="inputName" class="form-group__item">Name:</label>
+<input type="text" class="form-control" id="inputNameEdit" placeholder="Some product name">
+<span class="message messageForNameEdit"></span>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-8">
+<label for="inputEmail" class="form-group__item">Supplier email:</label>
+<input type="text" class="form-control" id="inputEmailEdit" placeholder="spb@epam.com">
+ <span class="message messageForEmail"></span>
+ </div>
+ </div>
+ 
+ <div class="form-group">
+ <div class="col-4">
+<label for="inputCount" class="form-group__item">Count:</label>
+<input type="text" class="form-control" id="inputCountEdit" placeholder="5">
+<span class="message messageForCountEdit"></span>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-8">
+<label for="inputPrice" class="form-group__item">Price:</label>
+<input type="text" class="form-control" id="inputPriceEdit" placeholder="$1,234.56">
+ <span class="message messageForPriceEdit"></span>
+ </div>
+  </div>
+
+<div class="form-group__select">
+  <div class="col-5">
+ <label>Delivery:</label>
+<select class="form-control form-control-sm" id="forEditBlock">
+<option value="emptyStr"></option>
+<option value="russia">Russia</option>
+<option value="belarus">Belarus</option>
+<option value="usa">USA</option>
+</select>
+</div>
+</div>
+
+
+<div class="modal-button__form2"><br><br><br><br><br>
+<button type="submit" class="btn btn-outline-secondary saveEdit">Save changes</button>
+ <button type="button" class="btn btn-outline-secondary cancel">Cancel</button>
+</div>
+</div>
+</div>
+</form>
+
+
+<form action="">
+  <div id="productInfo" class="infoModal">
+    <div class="modal-content__big">
+<h2>Product Name</h2>
+<div class="form-group">
+<div class="col-8">
+<label for="inputName" class="form-group__item">Name:</label>
+<input type="text" class="form-control inputNameInfo" readonly placeholder="Some product name">
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-8">
+<label for="inputEmail" class="form-group__item">Supplier email:</label>
+<input type="text" class="form-control inputEmailInfo" readonly placeholder="spb@epam.com">
+ </div>
+ </div>
+ 
+ <div class="form-group">
+ <div class="col-4">
+<label for="inputCount" class="form-group__item">Count:</label>
+<input type="text" class="form-control inputCountInfo" readonly placeholder="5">
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-8">
+<label for="inputPrice" class="form-group__item">Price:</label>
+<input type="text" class="form-control inputPriceInfo" readonly placeholder="$1,234.56">
+ </div>
+  </div>
+
+<div class="form-group__select">
+  <div class="col-5">
+ <label>Delivery:</label>
+<select class="form-control form-control-sm" id="forShowBlock">
+  <option value="emptyStr"></option>
+<option value="russia">Russia</option>
+<option value="belarus">Belarus</option>
+<option value="usa">USA</option>
+</select>
+</div>
+</div>
+<br><br><br><br>
+
+<div class="modal-button__form">
+ <button type="button" class="btn btn-outline-secondary cancel" value="cancel">Cancel</button>
+</div>
+</div>
+</div>
+</form>
+
+<div id="deleteProduct" class="delModal">
+  <div class="modal-content">
+   <h3 class="modal-content__subtitle">Are you sure?</h3>
+    <p class="modal-content__text"></p>
+    <div class="modal-content__button">
+    <button type="button" class="btn btn-outline-secondary delYes">Yes</button>
+    <button type="button" class="btn btn-outline-secondary delNo">No</button>
+  </div>
+</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="table.js"></script>
+</body>
+</html>

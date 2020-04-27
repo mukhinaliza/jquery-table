@@ -1,0 +1,84 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-size: small;
+	width: 100%;
+	max-width: 1440px;
+}
+
+.addModal, .editModal, .delModal, .infoModal{
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  border-radius: 10px;
+}
+
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 2px solid #888;
+  width: 30%; 
+  text-align: center;
+}
+.modal-content__big{
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 2px solid #888;
+	width: 30%;
+	
+}
+.form-group{
+	width: 100%;
+
+}
+.modal-content__subtitle{
+	color: black;
+	font-size: 200%;
+}
+.modal-content__text{
+	color: grey;
+	font-size: 100%;
+}
+
+.form-group__item:after{
+	content: " *";
+}
+.form-group__select{
+  margin-bottom: 0;
+}
+.form-check, .form-check__edit{
+ display: none;
+  float: right;
+width: 35%;
+  padding: 10px 20px;
+  border-radius: 5px;
+ text-align: left;
+  border: 1px solid grey;
+}
+
+.modal-button__form, .modal-button__form2{
+text-align: center;
+  }
+
+.message{
+  font-size: 80%;
+  color: red;
+}
+.invalid{
+  border: 1px solid red;
+}
+
+
